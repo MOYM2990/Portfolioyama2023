@@ -1,0 +1,723 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #E83929;
+    scroll-behavior: smooth;
+}
+
+h1 {
+    font-size: 4rem;
+    font-family: 'Saira Stencil One', sans-serif;
+    line-height: 2;
+}
+
+h2 {
+    font-size: 2rem;
+    font-family: 'Saira Stencil One', sans-serif;
+    line-height: 1.5;
+    margin-left: 16px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    margin-right: 16px;
+}
+
+h4,
+button {
+    font-size: 1.25rem;
+    font-family: 'Saira Stencil One', sans-serif;
+}
+
+p,
+label,
+select,
+input,
+textarea,
+button,
+modal_h {
+    font-family: 'Sawarabi Gothic', sans-serif;
+}
+
+a {
+    font-size: 2.5rem;
+    line-height: 2;
+    font-family: 'Saira Stencil One', sans-serif;
+    color: #FEF4F4;
+    text-decoration: none;
+}
+
+small {
+    font-family: 'Saira Stencil One', sans-serif;
+}
+
+/* 中央寄せ用のrelative */
+body {
+    position: relative;
+}
+
+section {
+    width: 100%;
+}
+
+
+/* セクション分けのアニメーション */
+.divide_animation {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+svg {
+    position: absolute;
+    left: -100px;
+    top: 0px;
+}
+
+svg path {
+    stroke-dasharray: 1000px;
+    stroke-dashoffset: 1000px;
+    stroke:#E83929;
+}
+
+.divide_fadein {
+    animation-fill-mode: forwards;
+    animation-duration: 2.5s;
+    animation-name: svg-anime;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes svg-anime {
+    0% {
+        stroke-dasharray: 1000px;
+        stroke-dashoffset: 1000px;
+    }
+    10% {
+        stroke-dasharray: 900px;
+        stroke-dashoffset: 900px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/* sidevisual */
+/* PC表示のときの外枠とメニュー */
+.sidevisual {
+    position: relative;
+}
+
+.sidevisual_content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 800;
+}
+
+.sidevisual_content_h2 {
+    color: #E83929;
+}
+
+#sidevisual_particle {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidevisual_bg {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: #FEF4F4;
+    top: 0;
+    left: 0;
+    transition: all 0.5s;
+}
+
+.sidevisual h2 {
+    display: none;
+}
+
+.sidevisual_menubutton {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(232, 57, 41, 0.5);
+    border-radius: 8px;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 801;
+}
+
+.sidevisual_menubutton span {
+    width: 70%;
+    height: 4px;
+    background-color: #FEF4F4;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+    transition: all 0.5s;
+}
+
+.sidevisual_menubutton span:nth-child(1) {
+    top: 14px;
+}
+
+.sidevisual_menubutton span:nth-child(2) {
+    top: 30px;
+}
+
+.sidevisual_menubutton span:nth-child(3) {
+    top: 46px;
+}
+
+/* クラス付与したときのうごき */
+.menubutton_action span:nth-child(1) {
+    width: 80%;
+    transform:translate(-26px,16px) rotate(225deg);
+}
+
+.menubutton_action span:nth-child(2) {
+    rotate: 10deg;
+    opacity: 0;
+}
+
+.menubutton_action span:nth-child(3) {
+    width: 80%;
+    transform:translate(-26px,-16px) rotate(135deg);
+}
+
+/* ナビゲーション */
+.sidevisual_nav {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(232, 57, 41, 0.8);
+    position: fixed;
+    bottom: 100%;
+    left: 0;
+    transition: all 0.5s;
+}
+
+.sidevisual ul {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    list-style-type: none;
+    text-align: center;
+}
+
+/* クラス付与したときのリストの動き */
+.action_menu {
+    bottom: 0;
+}
+
+.sidevisual_a {
+    color: #FEF4F4;
+}
+
+/* タブレットサイズ以上は普通のメニュー */
+@media screen and (min-width:768px) {
+    .sidevisual_content {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        z-index: 800;
+    }
+
+
+    .sidevisual h2 {
+        color: #E83929;
+        display: block;
+        width: 15%;
+        margin:12px 0 0 12px;
+        position: relative;
+        transition: all 0.2s;
+    }
+
+    .sidevisual h2:hover {
+        transform: scale(1.1,1.1);
+    }
+
+    .sidevisual_menubutton {
+        display: none;
+    }
+
+    .sidevisual_nav {
+        background: none;
+        width: 200px;
+        height: 20vh;
+        margin:24px 0 0 12px;
+        position: relative;
+        transition: all 0.5s;
+    }
+
+    .sidevisual ul {
+        padding:36px 16px 0 0;
+        list-style-type: none;
+        text-align: right;
+    }
+
+    .sidevisual_a {
+        width: auto;
+        display: block;
+        font-size: 2rem;
+        line-height: 2;
+        color: #E83929;
+        border-left: 0px solid ;
+        transition: all 0.2s;
+        position: relative;
+    }
+
+    .sidevisual_a:hover {
+        color:#FEF4F4;
+    }
+    
+    .sidevisual_a_add {
+        color:#FEF4F4;
+    }
+
+    .sidevisual_a_add:hover {
+        color: #E83929;
+    }
+
+    .sidevisual_a::before{
+        content: ''; /* コンテンツを追加 */
+        width: 100%; /* 線の幅 */
+        height: 100%; /* 線の高さ */
+        background-color: #E83929; /* 線の色 */
+        position: absolute; /* position: relative;からの線の絶対位置 */
+        top: 0; /* 線の位置 */
+        left: 0; /* 線の位置 */
+        z-index: -1;
+        /* 追記 */
+        transform: scale(0,1); /* 線のx軸の長さを0 */
+        transition: .5s; /* 要素の変形する時間*/
+        transform-origin: right top; /* 要素の座標の原点を設定*/
+      }
+
+    .sidevisual_a:hover::before{
+        transform: scale(1,1);
+    }
+
+    /* JS */
+    .sidevisual_switchJS {
+        width: auto;
+        display: block;
+    }
+
+    .sidevisual_switchJS::before {
+        content: ''; /* コンテンツを追加 */
+        width: 100%; /* 線の幅 */
+        height: 100%; /* 線の高さ */
+        background-color: #FEF4F4; /* 線の色 */
+        position: absolute; /* position: relative;からの線の絶対位置 */
+        top: 0; /* 線の位置 */
+        left: 0; /* 線の位置 */
+        z-index: -1;
+        /* 追記 */
+        transform: scale(0,1); /* 線のx軸の長さを0 */
+        transition: .5s; /* 要素の変形する時間*/
+        transform-origin: right top; /* 要素の座標の原点を設定*/
+    }
+
+    .sidevisual_switchJS:hover::before{
+        transform: scale(1,1);
+    }
+}
+
+/* main */
+/* 基本スマホサイズで作る */
+main {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 375px;
+    height: 100vh;
+}
+
+/* about */
+.about_profile_img {
+    display: block;
+    width: 80%;
+    transform: rotate(-10deg);
+    margin: 40px auto;
+}
+
+.about_h {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 12px 0;
+}
+
+.about_profile p {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 48px;
+}
+
+.about_skill_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.about_skill_content {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about_skill_icons {
+    display: block;
+    width: 50%;
+    padding: 8px;
+}
+
+.about_skill_stars {
+    display: block;
+    width: 50%;
+    height: auto;
+}
+
+.stars {
+    opacity: 0;
+    transform: translateY(-30px) rotateX(180deg) rotateY(90deg) scale(2,2);
+}
+
+.about_skill_starfadein {
+    animation-name: fadeinAnime;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeinAnime {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(180deg) rotateY(90deg) scale(2,2);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg)  scale(1,1);
+    }
+}
+
+.about_skill_box p{
+    padding: 8px;
+}
+
+/* works */
+.works_p {
+    width: 90%;
+    margin: 12px auto;
+}
+
+.works_slide li {
+    width: 100%;
+    text-align: center;
+}
+
+.works_slide img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    padding: 8px;
+}
+
+.works_wrapper {
+    margin-bottom: 64px;
+}
+
+/* works:slick編集 */
+.slick-next{ right:30px; z-index: 2;}
+.slick-prev{ left:30px; z-index: 2;}
+
+.works_slide img {
+height: auto;
+width: 100%;
+opacity: .5;
+transform: rotate(-5deg);
+transition: all .5s; 
+}
+
+.works_slide .slick-center img {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Works モーダル関係 */
+.works_modal_open,
+.works_modal_open2,
+.works_modal_open3 {
+    width: 100%;
+    cursor: pointer;
+}
+
+/*モーダルを閉じるボタンの指定*/
+.works_modal_container,
+.works_modal_container2,
+.works_modal_container3 {
+	width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s;
+    box-sizing: border-box;
+    z-index: 900;
+}
+
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.works_modal_container.active,
+.works_modal_container2.active,
+.works_modal_container3.active{
+	opacity: 1;
+	visibility: visible;
+}
+
+.works_modal_body {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 100%;
+    height: 100%;
+}
+
+.works_modal_close {
+    color: #FEF4F4;
+    font-size: 4rem;
+    position: absolute;
+    top: -15px;
+    right: 0;
+	cursor: pointer;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+}
+
+.modal_content {
+    width: 90%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: #FEF4F4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal_content img {
+    display: block;
+    padding: 16px;
+    width: 100%;
+}
+
+.modal_textarea {
+    width: 90%;
+    padding-top: 24px;
+    overflow-y: scroll;
+    text-align: left;
+}
+
+.modal_textarea h2 {
+    margin-left: 0;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    margin-bottom: 32px;
+}
+
+.modal_h {
+    margin-bottom: 4px;
+    text-decoration: underline;
+}
+
+.modal_paragraph {
+    margin-bottom: 24px;
+}
+
+@media screen and (min-width:768px) {
+    .works_modal_container,
+    .works_modal_container2,
+    .works_modal_container3 {
+        width: 90%;
+        height: 90vh;
+        border: 10px solid #E83929;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .works_modal_close:hover {
+        transform: rotate(225deg);
+    }
+
+    .modal_content {
+        width: 90%;
+        height: 80%;
+        margin: 0 auto;
+        flex-direction: row;
+    }
+
+    .modal_content a {
+        width: 55%;
+    }
+
+    .modal_textarea {
+        width: 40%;
+        height: 100%;
+    }
+}
+
+/* contact */
+.section_gradation {
+    width: 100%;
+    height: 50px;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(232, 57, 41, 1));
+}
+
+.gradation_reverse {
+    background-image: linear-gradient(0deg, rgba(254, 244, 244, 1), rgba(232, 57, 41, 1));
+}
+
+.section_contact {
+    background-color: #E83929;
+    color: #FEF4F4;
+    padding: 24px 0;
+}
+
+.contact_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+
+.contact_header h2 {
+    width: 50%;
+}
+
+.contact_icons {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.contact_icons img {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    transition: all 0.3s;
+}
+
+.contact_icons a:hover img{
+    transform: scale(1.1,1.1);
+}
+
+.contact_p {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 16px;
+}
+
+form {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    background-color: #FEF4F4;
+    border: none;
+    color: #E83929;
+    margin-bottom: 12px;
+}
+
+select,
+input {
+    border-radius: 2px;
+    height: 24px;
+}
+
+textarea {
+    border-radius: 5px;
+    height: 200px;
+    min-height: 200px;
+    max-height: 400px;
+    resize: vertical;
+}
+
+.contact_button {
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    display: inline-block;
+    width: 120px;
+    height: 60px;
+    border-radius: 40px;
+    background-color: #FEF4F4;
+    color: #E83929;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+button:hover {
+    border: 1px solid #FEF4F4;
+    background-color: #E83929;
+    color: #FEF4F4;
+}
+
+/* footer */
+footer{
+    text-align: center;
+    background-color: #FEF4F4;
+    padding: 24px;
+}
