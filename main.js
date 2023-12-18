@@ -146,10 +146,17 @@ $(function(){
 	var open = $('.works_modal_open'),
         open2 = $('.works_modal_open2'),
         open3 = $('.works_modal_open3'),
+        open_app = $('.works_app_modal_open'),
+        open2_app = $('.works_app_modal_open2'),
+        open3_app = $('.works_app_modal_open3'),
+        open3 = $('.works_modal_open3'),
 		close = $('.works_modal_close'),
 		container = $('.works_modal_container');
 		container2 = $('.works_modal_container2');
 		container3 = $('.works_modal_container3');
+		container_app = $('.works_app_modal_container');
+		container2_app = $('.works_app_modal_container2');
+		container3_app = $('.works_app_modal_container3');
 
 	//開くボタンをクリックしたらモーダルを表示する
 	open.on('click',function(){	
@@ -165,7 +172,25 @@ $(function(){
 	});
 
 	open3.on('click',function(){	
-		container3.addClass('active');
+		container_app.addClass('active');
+        $('body').css('overflow', 'hidden');
+		return false;
+	});
+
+	open_app.on('click',function(){	
+		container_app.addClass('active');
+        $('body').css('overflow', 'hidden');
+		return false;
+	});
+
+	open2_app.on('click',function(){	
+		container2_app.addClass('active');
+        $('body').css('overflow', 'hidden');
+		return false;
+	});
+
+	open3_app.on('click',function(){	
+		container3_app.addClass('active');
         $('body').css('overflow', 'hidden');
 		return false;
 	});
@@ -175,6 +200,9 @@ $(function(){
 		container.removeClass('active');
 		container2.removeClass('active');
 		container3.removeClass('active');
+		container_app.removeClass('active');
+		container2_app.removeClass('active');
+		container3_app.removeClass('active');
         $('body').removeAttr('style');
 	});
 
@@ -184,6 +212,9 @@ $(function(){
 			container.removeClass('active');
 			container2.removeClass('active');
 			container3.removeClass('active');
+            container_app.removeClass('active');
+            container2_app.removeClass('active');
+            container3_app.removeClass('active');
             $('body').removeAttr('style');
 		}
 	});
